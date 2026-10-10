@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-# Create dummy data for 200 houses
 np.random.seed(42)
 n_samples = 200
 
@@ -21,10 +20,8 @@ df = pd.DataFrame({
     'Age': age,
     'Price': price
 })
-# Features (Inputs used to make predictions)
 X = df[['SquareFeet', 'Bedrooms', 'Age']]
 
-# Target (The actual value we want to predict)
 y = df['Price']
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
@@ -32,7 +29,6 @@ X_train, X_test, y_train, y_test = train_test_split(
 model = LinearRegression()
 model.fit(X_train, y_train)
 
-# View what the model learned (weights and bias)
 print("Coefficients:", model.coef_)
 print("Intercept:", model.intercept_)
 y_pred = model.predict(X_test)
